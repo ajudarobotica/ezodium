@@ -486,6 +486,66 @@
     });
   };
 
+
+
+  // ==========================
+  // 8) Depoimentos — Player interno
+  // ==========================
+  const bindTestimonialVideoModal = () => {
+    const modal = $("#testimonial-video-modal");
+    const frame = $("#testimonial-video-frame");
+    const title = $("#testimonial-video-title");
+    const triggers = $$("[data-video-id]");
+
+    if (!modal || !frame || !title || !triggers.length) return;
+
+    const closeButtons = $$('[data-video-modal-close]', modal);
+    const closeButton = $(".video-modal__close", modal);
+    let lastFocusedTrigger = null;
+
+    const openModal = (trigger) => {
+      const videoId = trigger.dataset.videoId;
+      if (!videoId) return;
+
+      lastFocusedTrigger = trigger;
+      title.textContent = trigger.dataset.videoTitle || "Depoimento EZodium";
+      frame.src = `https://www.youtube.com/embed/${encodeURIComponent(videoId)}?autoplay=1&rel=0&modestbranding=1`;
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("video-modal-open");
+
+      window.setTimeout(() => closeButton?.focus({ preventScroll: true }), 80);
+    };
+
+    const closeModal = () => {
+      if (!modal.classList.contains("is-open")) return;
+
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("video-modal-open");
+      frame.src = "";
+
+      if (lastFocusedTrigger) {
+        lastFocusedTrigger.focus({ preventScroll: true });
+      }
+    };
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", (event) => {
+        event.preventDefault();
+        openModal(trigger);
+      });
+    });
+
+    closeButtons.forEach((button) => {
+      button.addEventListener("click", closeModal);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeModal();
+    });
+  };
+
   // ==========================
   // Init
   // ==========================
@@ -499,6 +559,7 @@
     bindMobileMenu();
     bindSupportJourneyAccordion();
     bindButtonMagneticHover();
+    bindTestimonialVideoModal();
   };
 
   document.addEventListener("DOMContentLoaded", init);
