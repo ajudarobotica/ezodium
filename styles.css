@@ -5369,3 +5369,1393 @@ details[open] .faq__q::after { content: "âˆ’"; }
     margin-top: 52px;
   }
 }
+
+/* =========================
+   FAQ — Jornada do Apoiador
+   Mapa de Jornada Espacial + Accordion Cinemático
+========================= */
+.support-journey {
+  position: relative;
+  margin-top: 76px;
+  padding: clamp(28px, 5vw, 46px);
+  border-radius: 34px;
+  border: 1px solid rgba(247, 184, 75, 0.16);
+  background:
+    radial-gradient(720px 320px at 8% 10%, rgba(255, 58, 58, 0.18), transparent 62%),
+    radial-gradient(620px 320px at 92% 12%, rgba(181, 108, 255, 0.16), transparent 62%),
+    radial-gradient(720px 360px at 50% 100%, rgba(247, 184, 75, 0.10), transparent 68%),
+    linear-gradient(145deg, rgba(18, 7, 31, 0.86), rgba(8, 3, 15, 0.72));
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.38),
+    inset 0 0 70px rgba(255, 255, 255, 0.025);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.support-journey::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.72) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 28% 72%, rgba(255, 255, 255, 0.44) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 72% 20%, rgba(247, 184, 75, 0.50) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 88% 78%, rgba(255, 58, 58, 0.50) 0 1px, transparent 1.7px),
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: auto, auto, auto, auto, 68px 68px, 68px 68px;
+  opacity: 0.42;
+  pointer-events: none;
+}
+
+.support-journey::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(180deg, rgba(7, 3, 15, 0.10), rgba(7, 3, 15, 0.44)),
+    radial-gradient(circle at 50% 50%, transparent 26%, rgba(0, 0, 0, 0.36) 100%);
+  pointer-events: none;
+}
+
+.support-journey__decor,
+.support-journey__intro,
+.support-journey__grid,
+.support-journey__cta {
+  position: relative;
+  z-index: 1;
+}
+
+.support-journey__orbit {
+  position: absolute;
+  border-radius: 999px;
+  border: 1px solid rgba(247, 184, 75, 0.12);
+  box-shadow: 0 0 34px rgba(247, 184, 75, 0.08);
+  pointer-events: none;
+}
+
+.support-journey__orbit--one {
+  width: 360px;
+  height: 360px;
+  top: -190px;
+  right: -120px;
+}
+
+.support-journey__orbit--two {
+  width: 260px;
+  height: 260px;
+  left: -110px;
+  bottom: 70px;
+  border-color: rgba(255, 58, 58, 0.14);
+  box-shadow: 0 0 34px rgba(255, 58, 58, 0.08);
+}
+
+.support-journey__intro {
+  max-width: 860px;
+  margin-bottom: 34px;
+}
+
+.support-journey__intro .badge {
+  margin-bottom: 18px;
+}
+
+.support-journey__intro .section__lead {
+  max-width: 780px;
+}
+
+.support-journey__grid {
+  display: grid;
+  grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 44px);
+  align-items: start;
+}
+
+.support-journey__route {
+  position: sticky;
+  top: calc(var(--header-h) + 26px);
+  display: grid;
+  gap: 18px;
+  padding: 16px 0 16px 14px;
+}
+
+.support-journey__route-line {
+  position: absolute;
+  top: 28px;
+  bottom: 28px;
+  left: 35px;
+  width: 3px;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 58, 58, 0.86), rgba(247, 184, 75, 0.72), rgba(181, 108, 255, 0.54));
+  box-shadow:
+    0 0 18px rgba(255, 58, 58, 0.28),
+    0 0 28px rgba(247, 184, 75, 0.18);
+}
+
+.support-journey__route-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  min-height: 54px;
+  color: rgba(255, 255, 255, 0.68);
+  transition: color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.support-journey__route-step span {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(8, 3, 15, 0.76);
+  color: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-h);
+  font-size: 0.82rem;
+  font-weight: 900;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.24);
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease), color 0.25s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.support-journey__route-step strong {
+  font-family: var(--font-h);
+  font-size: 0.92rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.support-journey__route-step.is-active {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.support-journey__route-step.is-active span {
+  color: #1a0b2e;
+  border-color: rgba(247, 184, 75, 0.62);
+  background: linear-gradient(135deg, #f7b84b, #ff6a3d 55%, #d4af37);
+  box-shadow:
+    0 0 24px rgba(247, 184, 75, 0.42),
+    0 0 36px rgba(255, 58, 58, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+
+.support-journey__accordion {
+  display: grid;
+  gap: 14px;
+}
+
+.support-journey__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.070), rgba(255, 255, 255, 0.025)),
+    rgba(10, 5, 18, 0.66);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.26);
+  transition:
+    border-color 0.28s var(--ease),
+    box-shadow 0.28s var(--ease),
+    background 0.28s var(--ease),
+    transform 0.28s var(--ease);
+}
+
+.support-journey__item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(380px 160px at 6% 0%, rgba(255, 58, 58, 0.12), transparent 70%),
+    radial-gradient(320px 160px at 96% 15%, rgba(247, 184, 75, 0.08), transparent 72%);
+  opacity: 0;
+  transition: opacity 0.28s var(--ease);
+  pointer-events: none;
+}
+
+.support-journey__item:hover,
+.support-journey__item[open] {
+  border-color: rgba(247, 184, 75, 0.42);
+  box-shadow:
+    0 24px 58px rgba(0, 0, 0, 0.36),
+    0 0 34px rgba(255, 58, 58, 0.10);
+}
+
+.support-journey__item:hover::before,
+.support-journey__item[open]::before {
+  opacity: 1;
+}
+
+.support-journey__item[open] {
+  background:
+    linear-gradient(135deg, rgba(247, 184, 75, 0.075), rgba(255, 58, 58, 0.045)),
+    rgba(13, 7, 22, 0.76);
+}
+
+.support-journey__summary {
+  position: relative;
+  z-index: 1;
+  min-height: 92px;
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) 42px;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 20px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.support-journey__summary::-webkit-details-marker {
+  display: none;
+}
+
+.support-journey__node {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  color: #ffdf90;
+  font-family: var(--font-h);
+  font-size: 0.92rem;
+  font-weight: 900;
+  border: 1px solid rgba(247, 184, 75, 0.34);
+  background:
+    radial-gradient(circle at 50% 28%, rgba(247, 184, 75, 0.18), transparent 58%),
+    rgba(7, 3, 15, 0.72);
+  box-shadow: 0 0 22px rgba(247, 184, 75, 0.10);
+  transition: transform 0.28s var(--ease), background 0.28s var(--ease), color 0.28s var(--ease), box-shadow 0.28s var(--ease);
+}
+
+.support-journey__item[open] .support-journey__node,
+.support-journey__item:hover .support-journey__node {
+  color: #1a0b2e;
+  background: linear-gradient(135deg, #f7b84b, #ff6a3d 62%, #d4af37);
+  box-shadow:
+    0 0 24px rgba(247, 184, 75, 0.42),
+    0 0 34px rgba(255, 58, 58, 0.24);
+  transform: rotate(-4deg) scale(1.03);
+}
+
+.support-journey__question {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.support-journey__question span {
+  color: rgba(247, 184, 75, 0.86);
+  font-size: 0.76rem;
+  font-weight: 850;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.support-journey__question strong {
+  color: #fff;
+  font-family: var(--font-h);
+  font-size: clamp(1.04rem, 2.1vw, 1.42rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+.support-journey__toggle {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: inset 0 0 16px rgba(255, 255, 255, 0.03);
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.support-journey__toggle::before,
+.support-journey__toggle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 15px;
+  height: 2px;
+  border-radius: 999px;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s var(--ease), background 0.25s var(--ease);
+}
+
+.support-journey__toggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.support-journey__item[open] .support-journey__toggle {
+  border-color: rgba(247, 184, 75, 0.45);
+  background: rgba(247, 184, 75, 0.12);
+  transform: rotate(45deg);
+}
+
+.support-journey__item[open] .support-journey__toggle::before,
+.support-journey__item[open] .support-journey__toggle::after {
+  background: var(--gold);
+}
+
+.support-journey__answer {
+  position: relative;
+  z-index: 1;
+  margin: -4px 20px 20px 94px;
+  padding: 0 18px 18px;
+  border-left: 1px solid rgba(247, 184, 75, 0.24);
+  animation: support-answer-in 0.28s var(--ease) both;
+}
+
+.support-journey__answer p {
+  margin: 0;
+  max-width: 78ch;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+.support-journey__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  margin-top: 30px;
+  padding: 22px 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(247, 184, 75, 0.22);
+  background:
+    radial-gradient(420px 220px at 0% 0%, rgba(247, 184, 75, 0.12), transparent 70%),
+    linear-gradient(135deg, rgba(255, 58, 58, 0.09), rgba(181, 108, 255, 0.05)),
+    rgba(255, 255, 255, 0.035);
+}
+
+.support-journey__cta span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--gold);
+  font-family: var(--font-h);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.support-journey__cta p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.80);
+  line-height: 1.55;
+}
+
+.support-journey__cta .btn {
+  flex: 0 0 auto;
+  margin-top: 0;
+}
+
+@keyframes support-answer-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .support-journey__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .support-journey__route {
+    position: relative;
+    top: auto;
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding: 6px 2px 12px;
+    scrollbar-width: thin;
+  }
+
+  .support-journey__route-line {
+    left: 24px;
+    right: 24px;
+    top: 27px;
+    bottom: auto;
+    width: auto;
+    height: 3px;
+  }
+
+  .support-journey__route-step {
+    grid-template-columns: 44px;
+    justify-items: center;
+    min-width: 84px;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .support-journey__route-step.is-active {
+    transform: translateY(-2px);
+  }
+
+  .support-journey__route-step strong {
+    font-size: 0.72rem;
+  }
+
+  .support-journey__cta {
+    align-items: stretch;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .support-journey__cta .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .support-journey {
+    margin-top: 52px;
+    padding: 24px 18px;
+    border-radius: 26px;
+  }
+
+  .support-journey__summary {
+    grid-template-columns: 46px minmax(0, 1fr) 36px;
+    gap: 12px;
+    min-height: 84px;
+    padding: 16px;
+  }
+
+  .support-journey__node {
+    width: 46px;
+    height: 46px;
+    border-radius: 16px;
+    font-size: 0.78rem;
+  }
+
+  .support-journey__question span {
+    font-size: 0.68rem;
+  }
+
+  .support-journey__question strong {
+    font-size: 1rem;
+  }
+
+  .support-journey__toggle {
+    width: 36px;
+    height: 36px;
+    border-radius: 13px;
+  }
+
+  .support-journey__answer {
+    margin: -2px 16px 18px 74px;
+    padding: 0 0 14px 14px;
+  }
+
+  .support-journey__answer p {
+    font-size: 0.92rem;
+  }
+}
+
+/* =========================
+   Correção Mobile — Jornada do Apoiador
+   Reforça o visual premium da FAQ no celular sem alterar o desktop.
+========================= */
+@media (max-width: 768px) {
+  .support-journey {
+    width: 100%;
+    margin-top: 56px;
+    padding: 24px 16px 22px;
+    border-radius: 28px;
+    border-color: rgba(247, 184, 75, 0.28);
+    background:
+      radial-gradient(420px 260px at 14% 0%, rgba(255, 58, 58, 0.24), transparent 64%),
+      radial-gradient(360px 240px at 88% 6%, rgba(181, 108, 255, 0.20), transparent 64%),
+      radial-gradient(360px 260px at 50% 100%, rgba(247, 184, 75, 0.12), transparent 70%),
+      linear-gradient(180deg, rgba(18, 7, 31, 0.94), rgba(7, 3, 15, 0.86));
+    box-shadow:
+      0 20px 54px rgba(0, 0, 0, 0.42),
+      inset 0 0 44px rgba(255, 255, 255, 0.025);
+  }
+
+  .support-journey::before {
+    background-size: auto, auto, auto, auto, 42px 42px, 42px 42px;
+    opacity: 0.34;
+  }
+
+  .support-journey::after {
+    background:
+      linear-gradient(180deg, rgba(7, 3, 15, 0.06), rgba(7, 3, 15, 0.34)),
+      radial-gradient(circle at 50% 48%, transparent 34%, rgba(0, 0, 0, 0.34) 100%);
+  }
+
+  .support-journey__orbit--one {
+    width: 240px;
+    height: 240px;
+    top: -118px;
+    right: -96px;
+  }
+
+  .support-journey__orbit--two {
+    width: 190px;
+    height: 190px;
+    left: -88px;
+    bottom: 18px;
+  }
+
+  .support-journey__intro {
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .support-journey__intro .badge {
+    margin-inline: auto;
+    margin-bottom: 14px;
+  }
+
+  .support-journey__intro .section__title {
+    font-size: clamp(1.7rem, 8vw, 2.25rem);
+    line-height: 1.06;
+    text-wrap: balance;
+  }
+
+  .support-journey__intro .section__lead {
+    margin-inline: auto;
+    font-size: 0.98rem;
+    line-height: 1.62;
+  }
+
+  .support-journey__grid {
+    gap: 18px;
+  }
+
+  .support-journey__route {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 12px 10px 14px;
+    border-radius: 22px;
+    border: 1px solid rgba(247, 184, 75, 0.16);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
+      rgba(7, 3, 15, 0.42);
+    box-shadow: inset 0 0 24px rgba(255, 255, 255, 0.025);
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .support-journey__route::-webkit-scrollbar {
+    display: none;
+  }
+
+  .support-journey__route-line {
+    top: 32px;
+    left: 28px;
+    right: 28px;
+    height: 2px;
+    width: auto;
+    background:
+      linear-gradient(90deg, rgba(255, 58, 58, 0.76), rgba(247, 184, 75, 0.70), rgba(181, 108, 255, 0.58));
+    opacity: 0.82;
+  }
+
+  .support-journey__route-step {
+    min-width: 94px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-content: start;
+    gap: 8px;
+    padding: 4px 8px 0;
+    border-radius: 18px;
+    color: rgba(255, 255, 255, 0.76);
+    scroll-snap-align: center;
+  }
+
+  .support-journey__route-step span {
+    width: 42px;
+    height: 42px;
+    border-radius: 15px;
+    background:
+      radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.07), transparent 60%),
+      rgba(8, 3, 15, 0.92);
+    border-color: rgba(247, 184, 75, 0.22);
+    color: rgba(255, 226, 166, 0.82);
+  }
+
+  .support-journey__route-step strong {
+    max-width: 82px;
+    color: currentColor;
+    font-size: 0.68rem;
+    line-height: 1.15;
+    letter-spacing: 0.06em;
+  }
+
+  .support-journey__route-step.is-active {
+    transform: translateY(-2px);
+    color: #fff;
+  }
+
+  .support-journey__route-step.is-active span {
+    transform: scale(1.08);
+  }
+
+  .support-journey__accordion {
+    gap: 12px;
+  }
+
+  .support-journey__item {
+    border-radius: 22px;
+    background:
+      radial-gradient(280px 140px at 8% 0%, rgba(255, 58, 58, 0.09), transparent 72%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.068), rgba(255, 255, 255, 0.025)),
+      rgba(10, 5, 18, 0.78);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.30);
+  }
+
+  .support-journey__item[open] {
+    border-color: rgba(247, 184, 75, 0.46);
+    box-shadow:
+      0 20px 46px rgba(0, 0, 0, 0.38),
+      0 0 26px rgba(255, 58, 58, 0.12);
+  }
+
+  .support-journey__summary {
+    min-height: auto;
+    grid-template-columns: 46px minmax(0, 1fr) 36px;
+    gap: 12px;
+    align-items: center;
+    padding: 16px 14px;
+  }
+
+  .support-journey__node {
+    width: 46px;
+    height: 46px;
+    border-radius: 16px;
+    font-size: 0.78rem;
+  }
+
+  .support-journey__question span {
+    font-size: 0.66rem;
+    line-height: 1.2;
+    letter-spacing: 0.09em;
+  }
+
+  .support-journey__question strong {
+    font-size: clamp(0.98rem, 4.9vw, 1.18rem);
+    line-height: 1.12;
+  }
+
+  .support-journey__toggle {
+    width: 36px;
+    height: 36px;
+    border-radius: 13px;
+  }
+
+  .support-journey__toggle::before,
+  .support-journey__toggle::after {
+    width: 13px;
+  }
+
+  .support-journey__answer {
+    margin: 0 14px 16px;
+    padding: 14px 0 2px;
+    border-left: 0;
+    border-top: 1px solid rgba(247, 184, 75, 0.22);
+  }
+
+  .support-journey__answer p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.86);
+  }
+
+  .support-journey__cta {
+    gap: 16px;
+    margin-top: 18px;
+    padding: 18px 16px;
+    border-radius: 22px;
+    background:
+      radial-gradient(280px 170px at 50% 0%, rgba(247, 184, 75, 0.14), transparent 72%),
+      linear-gradient(135deg, rgba(255, 58, 58, 0.10), rgba(181, 108, 255, 0.07)),
+      rgba(255, 255, 255, 0.04);
+  }
+
+  .support-journey__cta span {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+
+  .support-journey__cta p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .support-journey__cta .btn {
+    width: 100%;
+    max-width: 100%;
+    white-space: normal;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 420px) {
+  .support-journey {
+    padding: 22px 12px 18px;
+    border-radius: 24px;
+  }
+
+  .support-journey__route {
+    padding-inline: 8px;
+  }
+
+  .support-journey__route-step {
+    min-width: 78px;
+    padding-inline: 4px;
+  }
+
+  .support-journey__route-step span {
+    width: 38px;
+    height: 38px;
+    border-radius: 14px;
+    font-size: 0.74rem;
+  }
+
+  .support-journey__route-step strong {
+    font-size: 0.61rem;
+  }
+
+  .support-journey__summary {
+    grid-template-columns: 40px minmax(0, 1fr) 32px;
+    gap: 10px;
+    padding: 14px 12px;
+  }
+
+  .support-journey__node {
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    font-size: 0.72rem;
+  }
+
+  .support-journey__question span {
+    font-size: 0.61rem;
+  }
+
+  .support-journey__question strong {
+    font-size: 0.94rem;
+  }
+
+  .support-journey__toggle {
+    width: 32px;
+    height: 32px;
+    border-radius: 12px;
+  }
+
+  .support-journey__answer {
+    margin-inline: 12px;
+  }
+}
+
+/* =========================
+   FAQ — Mobile Navigation Dock
+   Otimização específica para celular: etapas tocáveis + cards mais limpos.
+========================= */
+.support-journey__route-step {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.support-journey__route-step:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(7, 3, 15, 0.95), 0 0 0 5px rgba(247, 184, 75, 0.75), 0 0 20px rgba(255, 58, 58, 0.32);
+  border-radius: 18px;
+}
+
+.support-journey__mobile-hint {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .support-journey__mobile-hint {
+    display: block;
+    margin: -4px 0 4px;
+    color: rgba(255, 226, 166, 0.78);
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  .support-journey__route {
+    position: sticky;
+    top: calc(var(--header-h) + 8px);
+    z-index: 8;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 7px;
+    overflow: visible;
+    padding: 8px;
+    border-radius: 22px;
+    border: 1px solid rgba(247, 184, 75, 0.28);
+    background:
+      radial-gradient(340px 120px at 18% 0%, rgba(255, 58, 58, 0.20), transparent 70%),
+      radial-gradient(320px 120px at 86% 8%, rgba(181, 108, 255, 0.17), transparent 70%),
+      linear-gradient(180deg, rgba(16, 6, 25, 0.94), rgba(7, 3, 15, 0.90));
+    box-shadow:
+      0 14px 34px rgba(0, 0, 0, 0.36),
+      0 0 24px rgba(255, 58, 58, 0.10),
+      inset 0 0 24px rgba(255, 255, 255, 0.025);
+    backdrop-filter: blur(16px) saturate(1.15);
+    -webkit-backdrop-filter: blur(16px) saturate(1.15);
+    scroll-snap-type: none;
+  }
+
+  .support-journey__route::before {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    top: 28px;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(255, 58, 58, 0.62), rgba(247, 184, 75, 0.70), rgba(181, 108, 255, 0.55));
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .support-journey__route-line {
+    display: none;
+  }
+
+  .support-journey__route-step {
+    min-width: 0;
+    min-height: 68px;
+    grid-template-columns: 1fr;
+    align-items: start;
+    justify-items: center;
+    align-content: start;
+    gap: 6px;
+    padding: 4px 3px 6px;
+    border-radius: 16px;
+    color: rgba(255, 255, 255, 0.68);
+    text-align: center;
+    transition: transform 0.25s var(--ease), color 0.25s var(--ease), background 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  }
+
+  .support-journey__route-step span {
+    position: relative;
+    z-index: 1;
+    width: 36px;
+    height: 36px;
+    border-radius: 14px;
+    color: rgba(255, 226, 166, 0.82);
+    border: 1px solid rgba(247, 184, 75, 0.26);
+    background:
+      radial-gradient(circle at 50% 24%, rgba(255, 255, 255, 0.10), transparent 58%),
+      rgba(7, 3, 15, 0.94);
+    font-size: 0.72rem;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+  }
+
+  .support-journey__route-step strong {
+    max-width: 100%;
+    color: currentColor;
+    font-size: 0.58rem;
+    line-height: 1.12;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .support-journey__route-step.is-active {
+    color: #fff;
+    transform: translateY(-2px);
+    background: linear-gradient(180deg, rgba(247, 184, 75, 0.12), rgba(255, 58, 58, 0.08));
+    box-shadow: inset 0 0 16px rgba(247, 184, 75, 0.08);
+  }
+
+  .support-journey__route-step.is-active span {
+    color: #1a0b2e;
+    transform: scale(1.08);
+    background: linear-gradient(135deg, #fff0b8, #f7b84b 38%, #ff6a3d 78%);
+    border-color: rgba(255, 240, 184, 0.78);
+    box-shadow:
+      0 0 18px rgba(247, 184, 75, 0.52),
+      0 0 26px rgba(255, 58, 58, 0.24),
+      inset 0 1px 0 rgba(255, 255, 255, 0.52);
+  }
+
+  .support-journey__accordion {
+    gap: 10px;
+  }
+
+  .support-journey__summary {
+    grid-template-columns: minmax(0, 1fr) 36px;
+    gap: 12px;
+    padding: 16px 14px;
+  }
+
+  .support-journey__node {
+    display: none;
+  }
+
+  .support-journey__question {
+    gap: 8px;
+  }
+
+  .support-journey__question span {
+    width: fit-content;
+    max-width: 100%;
+    padding: 5px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(247, 184, 75, 0.24);
+    background: rgba(247, 184, 75, 0.08);
+    color: rgba(255, 226, 166, 0.92);
+    font-size: 0.60rem;
+    line-height: 1;
+    letter-spacing: 0.07em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .support-journey__question strong {
+    font-size: clamp(1.02rem, 4.8vw, 1.22rem);
+    line-height: 1.12;
+  }
+
+  .support-journey__answer {
+    margin: 0 14px 16px;
+    padding: 14px 0 0;
+    border-top: 1px solid rgba(247, 184, 75, 0.20);
+    border-left: 0;
+  }
+
+  .support-journey__answer p {
+    font-size: 0.94rem;
+    line-height: 1.68;
+  }
+}
+
+@media (max-width: 420px) {
+  .support-journey__route {
+    gap: 5px;
+    padding: 7px 6px;
+    border-radius: 20px;
+  }
+
+  .support-journey__route::before {
+    left: 12px;
+    right: 12px;
+    top: 26px;
+  }
+
+  .support-journey__route-step {
+    min-height: 62px;
+    gap: 5px;
+    padding-inline: 2px;
+  }
+
+  .support-journey__route-step span {
+    width: 34px;
+    height: 34px;
+    border-radius: 13px;
+    font-size: 0.68rem;
+  }
+
+  .support-journey__route-step strong {
+    font-size: 0.52rem;
+    letter-spacing: 0.02em;
+  }
+
+  .support-journey__summary {
+    grid-template-columns: minmax(0, 1fr) 32px;
+    padding: 15px 12px;
+  }
+
+  .support-journey__question span {
+    max-width: min(210px, 100%);
+    font-size: 0.56rem;
+  }
+}
+
+/* =========================
+   Hotfix FAQ mobile — evita deslocamento horizontal ao abrir etapas 04 e 05
+========================= */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.support-journey,
+.support-journey__grid,
+.support-journey__route,
+.support-journey__accordion,
+.support-journey__item,
+.support-journey__summary,
+.support-journey__question,
+.support-journey__answer,
+.support-journey__cta {
+  max-width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .support-journey {
+    width: 100%;
+    contain: layout paint;
+    overflow-x: clip;
+  }
+
+  .support-journey__grid,
+  .support-journey__accordion,
+  .support-journey__item {
+    width: 100%;
+    overflow-x: clip;
+  }
+
+  .support-journey__route {
+    width: 100%;
+    max-width: 100%;
+    left: auto;
+    right: auto;
+    overflow: hidden;
+  }
+
+  .support-journey__route-step {
+    width: 100%;
+    max-width: 100%;
+    transform: none;
+  }
+
+  .support-journey__route-step.is-active {
+    transform: translateY(-2px);
+  }
+
+  .support-journey__question strong,
+  .support-journey__question span,
+  .support-journey__answer p,
+  .support-journey__cta p {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* =========================
+   Hotfix FAQ mobile — mantém o background da seção Depoimentos
+   Remove o painel sólido da Jornada no celular para o fundo da seção continuar visível.
+========================= */
+@media (max-width: 768px) {
+  .section--testimonials .support-journey {
+    background: transparent !important;
+    border-color: rgba(247, 184, 75, 0.18) !important;
+    box-shadow: none !important;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .section--testimonials .support-journey::before {
+    opacity: 0.20 !important;
+    background-size: auto, auto, auto, auto, 52px 52px, 52px 52px;
+  }
+
+  .section--testimonials .support-journey::after {
+    background:
+      linear-gradient(180deg, rgba(7, 3, 15, 0.04), rgba(7, 3, 15, 0.12)),
+      radial-gradient(circle at 50% 50%, transparent 34%, rgba(0, 0, 0, 0.16) 100%) !important;
+  }
+
+  .section--testimonials .support-journey__intro,
+  .section--testimonials .support-journey__grid {
+    position: relative;
+    z-index: 2;
+  }
+
+  .section--testimonials .support-journey__route {
+    background:
+      radial-gradient(340px 120px at 18% 0%, rgba(255, 58, 58, 0.16), transparent 70%),
+      radial-gradient(320px 120px at 86% 8%, rgba(181, 108, 255, 0.12), transparent 70%),
+      linear-gradient(180deg, rgba(16, 6, 25, 0.70), rgba(7, 3, 15, 0.58)) !important;
+    backdrop-filter: blur(14px) saturate(1.15);
+    -webkit-backdrop-filter: blur(14px) saturate(1.15);
+  }
+
+  .section--testimonials .support-journey__item {
+    background:
+      radial-gradient(280px 140px at 8% 0%, rgba(255, 58, 58, 0.08), transparent 72%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.060), rgba(255, 255, 255, 0.020)),
+      rgba(10, 5, 18, 0.54) !important;
+    backdrop-filter: blur(8px) saturate(1.08);
+    -webkit-backdrop-filter: blur(8px) saturate(1.08);
+  }
+
+  .section--testimonials .support-journey__item[open] {
+    background:
+      radial-gradient(300px 150px at 8% 0%, rgba(247, 184, 75, 0.11), transparent 72%),
+      linear-gradient(135deg, rgba(247, 184, 75, 0.060), rgba(255, 58, 58, 0.035)),
+      rgba(13, 7, 22, 0.60) !important;
+  }
+}
+
+/* =========================
+   Ajuste Mobile — FAQ alinhado à esquerda
+   Mantém o cabeçalho da Jornada do Apoiador alinhado com o restante da leitura no celular.
+========================= */
+@media (max-width: 768px) {
+  .support-journey__intro {
+    text-align: left;
+  }
+
+  .support-journey__intro .badge {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .support-journey__intro .section__title,
+  .support-journey__intro .section__lead {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+  }
+}
+
+/* =========================
+   Ajuste Desktop — FAQ com dourado da logo EZodium
+   Remove o tom laranja dos botões/etapas ativas da Jornada do Apoiador.
+========================= */
+@media (min-width: 769px) {
+  .section--testimonials .support-journey__route-step.is-active span,
+  .section--testimonials .support-journey__item[open] .support-journey__node,
+  .section--testimonials .support-journey__item:hover .support-journey__node {
+    color: #13091d;
+    border-color: rgba(255, 232, 157, 0.72);
+    background:
+      linear-gradient(135deg,
+        #fff2b8 0%,
+        #f7d774 26%,
+        #d4af37 58%,
+        #9a7422 100%
+      );
+    box-shadow:
+      0 0 22px rgba(247, 216, 116, 0.46),
+      0 0 34px rgba(212, 175, 55, 0.30),
+      inset 0 1px 0 rgba(255, 255, 255, 0.52);
+  }
+
+  .section--testimonials .support-journey__route-step.is-active span {
+    transform: scale(1.02);
+  }
+
+  .section--testimonials .support-journey__item[open] .support-journey__toggle {
+    border-color: rgba(255, 232, 157, 0.55);
+    background: rgba(212, 175, 55, 0.14);
+  }
+
+  .section--testimonials .support-journey__item[open] .support-journey__toggle::before,
+  .section--testimonials .support-journey__item[open] .support-journey__toggle::after {
+    background: #f7d774;
+  }
+}
+
+/* =========================
+   Ajuste FAQ — Botões em vermelho galático
+   Substitui o dourado muito amarelo nas etapas ativas e botões da Jornada do Apoiador.
+========================= */
+.section--testimonials .support-journey__route-step.is-active span,
+.section--testimonials .support-journey__item[open] .support-journey__node,
+.section--testimonials .support-journey__item:hover .support-journey__node {
+  color: #ffffff;
+  border-color: rgba(255, 45, 84, 0.72);
+  background:
+    linear-gradient(135deg,
+      #ff2d54 0%,
+      #c41946 42%,
+      #7b1238 74%,
+      #b56cff 100%
+    );
+  box-shadow:
+    0 0 22px rgba(255, 45, 84, 0.44),
+    0 0 36px rgba(146, 28, 79, 0.34),
+    0 0 22px rgba(181, 108, 255, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.section--testimonials .support-journey__route-step.is-active span {
+  transform: scale(1.04);
+}
+
+.section--testimonials .support-journey__item[open] .support-journey__toggle {
+  border-color: rgba(255, 45, 84, 0.52);
+  background:
+    linear-gradient(135deg, rgba(255, 45, 84, 0.20), rgba(181, 108, 255, 0.10));
+  box-shadow:
+    0 0 18px rgba(255, 45, 84, 0.18),
+    inset 0 0 14px rgba(255, 255, 255, 0.035);
+}
+
+.section--testimonials .support-journey__item[open] .support-journey__toggle::before,
+.section--testimonials .support-journey__item[open] .support-journey__toggle::after {
+  background: #ffffff;
+}
+
+.section--testimonials .support-journey__route-line {
+  background:
+    linear-gradient(180deg,
+      rgba(255, 45, 84, 0.90),
+      rgba(146, 28, 79, 0.78),
+      rgba(181, 108, 255, 0.58)
+    );
+  box-shadow:
+    0 0 18px rgba(255, 45, 84, 0.28),
+    0 0 28px rgba(181, 108, 255, 0.12);
+}
+
+@media (max-width: 768px) {
+  .section--testimonials .support-journey__route::before {
+    background:
+      linear-gradient(90deg,
+        rgba(255, 45, 84, 0.72),
+        rgba(146, 28, 79, 0.68),
+        rgba(181, 108, 255, 0.56)
+      );
+  }
+
+  .section--testimonials .support-journey__route-step.is-active span {
+    transform: scale(1.08);
+  }
+}
+
+/* =========================
+   Ajuste FAQ — Card ativo em vermelho galático
+   O card aberto assume vermelho galático; cards fechados/hover mantêm o padrão dourado.
+========================= */
+.support-journey {
+  --faq-default-gold: #f7b84b;
+  --faq-default-gold-soft: rgba(247, 184, 75, 0.34);
+  --faq-red: #ff2d54;
+  --faq-red-deep: #921c4f;
+  --faq-red-dark: #5f0b2d;
+  --faq-red-glow: rgba(255, 45, 84, 0.34);
+}
+
+/* Estado padrão/hover sem abrir: volta para o dourado original */
+.section--testimonials .support-journey__item:not([open]):hover {
+  border-color: rgba(247, 184, 75, 0.38);
+  background:
+    linear-gradient(135deg, rgba(247, 184, 75, 0.055), rgba(255, 255, 255, 0.025)),
+    rgba(10, 5, 18, 0.70);
+  box-shadow:
+    0 22px 52px rgba(0, 0, 0, 0.34),
+    0 0 24px rgba(247, 184, 75, 0.10);
+}
+
+.section--testimonials .support-journey__item:not([open]):hover .support-journey__node {
+  color: #1a0b2e;
+  border-color: rgba(247, 184, 75, 0.58);
+  background: linear-gradient(135deg, #fff0b8 0%, #f7b84b 46%, #d4af37 100%);
+  box-shadow:
+    0 0 22px rgba(247, 184, 75, 0.36),
+    0 0 30px rgba(212, 175, 55, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.46);
+}
+
+/* Estado ativo/aberto: vermelho galático no card completo */
+.section--testimonials .support-journey__item[open] {
+  border-color: rgba(255, 45, 84, 0.62) !important;
+  background:
+    radial-gradient(420px 190px at 8% 0%, rgba(255, 45, 84, 0.24), transparent 72%),
+    radial-gradient(360px 180px at 96% 10%, rgba(181, 108, 255, 0.16), transparent 72%),
+    linear-gradient(135deg, rgba(255, 45, 84, 0.115), rgba(146, 28, 79, 0.080)),
+    rgba(13, 7, 22, 0.78) !important;
+  box-shadow:
+    0 26px 62px rgba(0, 0, 0, 0.42),
+    0 0 34px rgba(255, 45, 84, 0.22),
+    0 0 48px rgba(181, 108, 255, 0.10) !important;
+}
+
+.section--testimonials .support-journey__item[open]::before {
+  opacity: 1;
+  background:
+    radial-gradient(460px 190px at 6% 0%, rgba(255, 45, 84, 0.26), transparent 70%),
+    radial-gradient(360px 180px at 96% 15%, rgba(181, 108, 255, 0.15), transparent 72%);
+}
+
+.section--testimonials .support-journey__item[open] .support-journey__node {
+  color: #ffffff;
+  border-color: rgba(255, 45, 84, 0.72);
+  background:
+    linear-gradient(135deg,
+      #ff2d54 0%,
+      #c41946 42%,
+      #7b1238 74%,
+      #b56cff 100%
+    );
+  box-shadow:
+    0 0 22px rgba(255, 45, 84, 0.44),
+    0 0 36px rgba(146, 28, 79, 0.34),
+    0 0 22px rgba(181, 108, 255, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  transform: rotate(-4deg) scale(1.03);
+}
+
+.section--testimonials .support-journey__item[open] .support-journey__question span {
+  color: #ffd7df;
+  border-color: rgba(255, 45, 84, 0.46);
+  background:
+    linear-gradient(135deg, rgba(255, 45, 84, 0.18), rgba(181, 108, 255, 0.08));
+}
+
+.section--testimonials .support-journey__item[open] .support-journey__answer {
+  border-color: rgba(255, 45, 84, 0.34);
+}
+
+.section--testimonials .support-journey__item[open] .support-journey__toggle {
+  border-color: rgba(255, 45, 84, 0.56);
+  background:
+    linear-gradient(135deg, rgba(255, 45, 84, 0.22), rgba(181, 108, 255, 0.10));
+  box-shadow:
+    0 0 18px rgba(255, 45, 84, 0.20),
+    inset 0 0 14px rgba(255, 255, 255, 0.035);
+}
+
+.section--testimonials .support-journey__item[open] .support-journey__toggle::before,
+.section--testimonials .support-journey__item[open] .support-journey__toggle::after {
+  background: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .section--testimonials .support-journey__item:not([open]):hover {
+    background:
+      radial-gradient(280px 140px at 8% 0%, rgba(247, 184, 75, 0.08), transparent 72%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.060), rgba(255, 255, 255, 0.020)),
+      rgba(10, 5, 18, 0.54) !important;
+  }
+
+  .section--testimonials .support-journey__item[open] {
+    border-color: rgba(255, 45, 84, 0.62) !important;
+    background:
+      radial-gradient(320px 150px at 8% 0%, rgba(255, 45, 84, 0.22), transparent 72%),
+      radial-gradient(260px 140px at 96% 8%, rgba(181, 108, 255, 0.13), transparent 72%),
+      linear-gradient(135deg, rgba(255, 45, 84, 0.105), rgba(146, 28, 79, 0.070)),
+      rgba(13, 7, 22, 0.62) !important;
+    box-shadow:
+      0 20px 46px rgba(0, 0, 0, 0.38),
+      0 0 28px rgba(255, 45, 84, 0.20) !important;
+  }
+
+  .section--testimonials .support-journey__item[open] .support-journey__answer {
+    border-top-color: rgba(255, 45, 84, 0.34);
+  }
+}
