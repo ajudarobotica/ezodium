@@ -1014,8 +1014,15 @@ summary:focus-visible,
 /* =========================
    Testimonials & FAQ
 ========================= */
-.grid--testimonials { grid-template-columns: repeat(12, 1fr); }
-.tcard { grid-column: span 4; padding: 24px; }
+.grid--testimonials {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid--testimonials .tcard {
+  grid-column: auto;
+}
+
+.tcard { padding: 24px; }
 .tcard__head { display: flex; gap: 12px; align-items: center; margin-bottom: 14px; }
 .avatar {
   width: 44px; height: 44px; border-radius: 14px;
@@ -1027,6 +1034,19 @@ summary:focus-visible,
 .avatar--violet { background: rgba(181,108,255,0.2); color: var(--violet); }
 
 .tcard__text { color: var(--muted); font-style: italic; line-height: 1.5; }
+
+@media (max-width: 1024px) {
+  .grid--testimonials {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .grid--testimonials {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 .faq { display: grid; gap: 12px; max-width: 800px; }
 .faq__item {
@@ -6978,7 +6998,7 @@ body {
   }
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1024px) {
   .sticker-album-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
