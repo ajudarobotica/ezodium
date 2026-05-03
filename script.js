@@ -384,6 +384,80 @@
     );
   };
 
+
+  // ==========================
+  // 6.1) Jornada do Apoiador accordion
+  // ==========================
+  const bindSupportJourneyAccordion = () => {
+    const accordion = $('[data-support-journey-accordion]');
+    if (!accordion) return;
+
+    const journey = accordion.closest('.support-journey');
+    const items = $$('.support-journey__item', accordion);
+    const routeSteps = journey ? $$('.support-journey__route-step', journey) : [];
+
+    if (!items.length) return;
+
+    const setActiveStep = (activeIndex) => {
+      routeSteps.forEach((step, index) => {
+        const isActive = index === activeIndex;
+        step.classList.toggle('is-active', isActive);
+        step.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+
+        // No mobile, o dock de etapas já cabe na largura da seção.
+        // Evita scrollIntoView horizontal, que em alguns navegadores desloca a página para a esquerda.
+      });
+    };
+
+    const openJourneyItem = (index, shouldScroll = false) => {
+      const targetItem = items[index];
+      if (!targetItem) return;
+
+      items.forEach((item, itemIndex) => {
+        if (itemIndex !== index) item.removeAttribute('open');
+      });
+
+      targetItem.setAttribute('open', '');
+      setActiveStep(index);
+
+      if (shouldScroll && window.innerWidth <= 900) {
+        targetItem.scrollIntoView({
+          behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+          block: 'nearest',
+          inline: 'nearest',
+        });
+
+        // Garante que nenhum alinhamento horizontal acidental permaneça no viewport.
+        if (window.scrollX !== 0) {
+          window.scrollTo({ left: 0, top: window.scrollY, behavior: 'auto' });
+        }
+      }
+    };
+
+    routeSteps.forEach((step, index) => {
+      step.setAttribute('aria-pressed', step.classList.contains('is-active') ? 'true' : 'false');
+      step.addEventListener('click', () => openJourneyItem(index, true));
+    });
+
+    items.forEach((item, index) => {
+      item.addEventListener('toggle', () => {
+        if (item.open) {
+          items.forEach((otherItem) => {
+            if (otherItem !== item) otherItem.removeAttribute('open');
+          });
+          setActiveStep(index);
+          return;
+        }
+
+        const openIndex = items.findIndex((currentItem) => currentItem.open);
+        setActiveStep(openIndex >= 0 ? openIndex : -1);
+      });
+    });
+
+    const initialIndex = items.findIndex((item) => item.open);
+    setActiveStep(initialIndex >= 0 ? initialIndex : -1);
+  };
+
   // ==========================
   // 7) Button micro-interaction (optional)
   //    Add class "btn" to buttons/links
@@ -423,6 +497,7 @@
     bindHeroParallax();
     bindTrajectoryParallax();
     bindMobileMenu();
+    bindSupportJourneyAccordion();
     bindButtonMagneticHover();
   };
 
