@@ -546,6 +546,33 @@
     });
   };
 
+
+  // ==========================
+  // 9) Meta Pixel — WhatsApp click tracking
+  // ==========================
+  const bindMetaPixelWhatsAppTracking = () => {
+    const whatsappLinks = $$('a[href*="wa.me/"], a[href*="api.whatsapp.com/"]');
+    if (!whatsappLinks.length) return;
+
+    whatsappLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (typeof window.fbq !== "function") return;
+
+        window.fbq("track", "Lead", {
+          content_name: "Clique WhatsApp - Apoiar EZodium",
+          content_category: "Apoio / Patrocínio",
+          lead_source: "landing_page_ezodium",
+        });
+
+        window.fbq("trackCustom", "WhatsAppClick", {
+          content_name: "Clique WhatsApp - Apoiar EZodium",
+          content_category: "Apoio / Patrocínio",
+          lead_source: "landing_page_ezodium",
+        });
+      });
+    });
+  };
+
   // ==========================
   // Init
   // ==========================
@@ -560,6 +587,7 @@
     bindSupportJourneyAccordion();
     bindButtonMagneticHover();
     bindTestimonialVideoModal();
+    bindMetaPixelWhatsAppTracking();
   };
 
   document.addEventListener("DOMContentLoaded", init);
